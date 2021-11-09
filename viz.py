@@ -3,7 +3,6 @@ import json
 from pprint import pprint
 
 import pandas as pd
-from matplotlib import pyplot as plt
 
 
 with open("result.json", "r") as f:
@@ -19,14 +18,12 @@ benches["threads"] = pd.to_numeric(benches["threads"])
 
 benches = benches[benches.name != "Noop"]
 
-data = benches.pivot(
-    "threads",
-    columns="name",
-    values="real_time",
-).sort_values(by="threads")
-
-print(data)
-data.to_csv("result.csv")
-data.plot()
-plt.show(block=False)
-_ = input()
+for key in ['real_time', 'cpu_time']:
+    data = benches.pivot(
+        "threads",
+        columns="name",
+        values=key,
+    ).sort_values(by="threads")
+    
+    print(f"{key}\n",data)
+    data.to_csv(f"result-{key}.csv")
