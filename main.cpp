@@ -41,7 +41,6 @@ struct LockPause {
 
 	void lock() {
 		while (locked.exchange(true, std::memory_order_acquire)) {	// retry loop
-
 			/* on ARM:
 			__asm__ __volatile__("wfe\n");
 			*/

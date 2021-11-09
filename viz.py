@@ -22,7 +22,7 @@ benches = benches[benches.name != "Noop"]
 data = benches.pivot(
     "threads",
     columns="name",
-    values="cpu_time",
+    values="real_time",
 ).sort_values(by="threads")
 
 print(data)
