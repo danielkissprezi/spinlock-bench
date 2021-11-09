@@ -1,4 +1,6 @@
 #include <benchmark/benchmark.h>
+
+#include <cstdint>
 #include <atomic>
 #include <thread>
 #include <mutex>
@@ -8,7 +10,7 @@
 #include <emmintrin.h>
 
 ///////////////////// ● Locks /////////////////////
-struct LockNoYield {
+struct NoYield {
 	std::atomic<bool> locked{false};
 
 	void lock() {
@@ -21,7 +23,7 @@ struct LockNoYield {
 	}
 };
 
-struct LockYield {
+struct Yield {
 	std::atomic<bool> locked{false};
 
 	void lock() {
@@ -36,7 +38,7 @@ struct LockYield {
 	}
 };
 
-struct LockPause {
+struct Pause {
 	std::atomic<bool> locked{false};
 
 	void lock() {
@@ -64,7 +66,7 @@ struct LockPause {
 
 ///////////////////// ● Helper methods /////////////////////
 template <class TLock>
-void LockUnlockNTimes(TLock& l, int n) {
+void UnlockNTimes(TLock& l, int n) {
 	for (int i = 0; i < n; ++i) {
 		l.lock();
 		// force lock write to global memory
@@ -79,13 +81,13 @@ void LockUnlockNTimes(TLock& l, int n) {
 ///////////////////// ✓ Helper methods /////////////////////
 
 template <class TLock>
-void BenchFunc(benchmark::State& state) {
+void HeavyContention(benchmark::State& state) {
 	static TLock* l;
 	if (state.thread_index() == 0) {
 		l = new TLock();
 	}
 	for (auto _ : state) {
-		LockUnlockNTimes(*l, 1);
+		UnlockNTimes(*l, 1);
 	}
 	// cleanup
 	if (state.thread_index() == 0) {
@@ -93,16 +95,16 @@ void BenchFunc(benchmark::State& state) {
 	}
 }
 
-#define LOCK_BENCH(lock)                                            \
-	BENCHMARK_TEMPLATE(BenchFunc, lock)->Threads(1)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(BenchFunc, lock)->Threads(2)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(BenchFunc, lock)->Threads(4)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(BenchFunc, lock)->Threads(8)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(BenchFunc, lock)->Threads(16)->UseRealTime();
+#define LOCK_BENCH(method, lock)                                 \
+	BENCHMARK_TEMPLATE(method, lock)->Threads(1)->UseRealTime(); \
+	BENCHMARK_TEMPLATE(method, lock)->Threads(2)->UseRealTime(); \
+	BENCHMARK_TEMPLATE(method, lock)->Threads(4)->UseRealTime(); \
+	BENCHMARK_TEMPLATE(method, lock)->Threads(8)->UseRealTime(); \
+	BENCHMARK_TEMPLATE(method, lock)->Threads(16)->UseRealTime();
 
-LOCK_BENCH(LockNoYield)
-LOCK_BENCH(LockYield)
-LOCK_BENCH(LockPause)
-LOCK_BENCH(std::mutex)
+LOCK_BENCH(HeavyContention, NoYield)
+LOCK_BENCH(HeavyContention, Yield)
+LOCK_BENCH(HeavyContention, Pause)
+LOCK_BENCH(HeavyContention, std::mutex)
 
 BENCHMARK_MAIN();
