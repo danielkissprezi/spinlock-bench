@@ -85,7 +85,7 @@ void BenchFunc(benchmark::State& state) {
 		l = new TLock();
 	}
 	for (auto _ : state) {
-		LockUnlockNTimes(*l, 128);
+		LockUnlockNTimes(*l, 1);
 	}
 	// cleanup
 	if (state.thread_index() == 0) {

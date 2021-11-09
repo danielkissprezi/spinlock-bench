@@ -1,3 +1,7 @@
+.DEFAULT_GOAL:=full
+
+clean:
+	rm -rf build
 full:
 	mkdir build
 	cd build && meson setup --buildtype release ..
