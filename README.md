@@ -4,17 +4,17 @@
 ## Build requirements:
 
 - C++ compiler
-- Google bench
-- Meson
+- CMake
 - Python deps (requirements.txt)
 
 
 ## Build
 
 ```
+git submodule update --init --recursive
 mkdir build
 cd build
-meson setup --buildtype release ..
+cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. 
 ninja
 ```
 
