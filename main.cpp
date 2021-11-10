@@ -28,8 +28,10 @@ struct Yield {
 
 	void lock() {
 		while (locked.exchange(true, std::memory_order_acquire)) {
-			// reschedule the current thread to reduce pressure on the lock
-			std::this_thread::yield();
+			do {
+				// reschedule the current thread to reduce pressure on the lock
+				std::this_thread::yield();
+			} while (locked.load(std::memory_order_relaxed));
 		}
 	}
 
@@ -43,22 +45,24 @@ struct Pause {
 
 	void lock() {
 		while (locked.exchange(true, std::memory_order_acquire)) {	// retry loop
-			/* on ARM:
-			__asm__ __volatile__("wfe\n");
-			*/
-			// On x86:
-			// emit a pause instruction.
-			// this signals to the CPU that this thread is in a spin-loop
-			// but does not release this thread to the OS scheduler!
-			_mm_pause();
+			do {
+				/* on ARM:
+				__asm__ __volatile__("wfe\n");
+				*/
+				// On x86:
+				// emit a pause instruction.
+				// this signals to the CPU that this thread is in a spin-loop
+				// but does not release this thread to the OS scheduler!
+				_mm_pause();
+			} while (locked.load(std::memory_order_relaxed));
 		}
 	}
 
 	void unlock() {
+		locked.store(false, std::memory_order_release);
 		/* on ARM:
 		__asm__ __volatile__("sev\n");
 		*/
-		locked.store(false, std::memory_order_release);
 	}
 };
 
