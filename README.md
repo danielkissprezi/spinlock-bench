@@ -19,6 +19,6 @@ git submodule update --init --recursive
 mkdir build
 cd build
 cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. 
-cmake --build .
+cmake --build . --config Release
 ./spin_bench --benchmark_out=result.json
 ```
