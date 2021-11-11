@@ -128,5 +128,3 @@ LOCK_BENCH(HeavyContention, NoYield)
 LOCK_BENCH(HeavyContention, Yield)
 LOCK_BENCH(HeavyContention, Pause)
 LOCK_BENCH(HeavyContention, std::mutex)
-
-BENCHMARK_MAIN();
