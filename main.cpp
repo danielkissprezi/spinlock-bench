@@ -87,12 +87,12 @@ struct Pause {
 ///////////////////// ✓ Locks /////////////////////
 
 ///////////////////// ● Helper methods /////////////////////
-template <class TLock>
-void UnlockNTimes(TLock& l, int n) {
+template <int n, class TLock>
+void UnlockNTimes(TLock& l) {
 	for (int i = 0; i < n; ++i) {
 		l.lock();
 		// force lock write to global memory
-		/*
+		//*
 		benchmark::DoNotOptimize(l);
 		benchmark::ClobberMemory();
 		//*/
@@ -109,7 +109,7 @@ void HeavyContention(benchmark::State& state) {
 		l = new TLock();
 	}
 	for (auto _ : state) {
-		UnlockNTimes(*l, 1);
+		UnlockNTimes<1>(*l);
 	}
 	// cleanup
 	if (state.thread_index() == 0) {
