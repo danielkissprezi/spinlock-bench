@@ -5,9 +5,26 @@
 #include <thread>
 #include <mutex>
 
-// x86, none for ARM
-// <intrin.h> on Windows
+#if defined(__amd64__) || defined(_M_X64)
+#define SPIN_X64 1
+
+#if defined(_MSVC_VER)
+// thx msvc
+#include <inrin.h>
+#else
 #include <emmintrin.h>
+#endif
+
+#elif defined(__arm__)
+
+#define SPIN_ARM 1
+
+
+#else
+
+#error TODO
+
+#endif
 
 ///////////////////// ● Locks /////////////////////
 struct NoYield {
@@ -46,23 +63,24 @@ struct Pause {
 	void lock() {
 		while (locked.exchange(true, std::memory_order_acquire)) {	// retry loop
 			do {
-				/* on ARM:
-				__asm__ __volatile__("wfe\n");
-				*/
-				// On x86:
+#if SPIN_ARM
+				asm volatile("wfe\n");
+#endif
+#if SPIN_X64
 				// emit a pause instruction.
 				// this signals to the CPU that this thread is in a spin-loop
 				// but does not release this thread to the OS scheduler!
 				_mm_pause();
+#endif
 			} while (locked.load(std::memory_order_relaxed));
 		}
 	}
 
 	void unlock() {
 		locked.store(false, std::memory_order_release);
-		/* on ARM:
-		__asm__ __volatile__("sev\n");
-		*/
+#if SPIN_ARM
+		asm volatile("sev\n");
+#endif
 	}
 };
 
@@ -74,7 +92,7 @@ void UnlockNTimes(TLock& l, int n) {
 	for (int i = 0; i < n; ++i) {
 		l.lock();
 		// force lock write to global memory
-		//*
+		/*
 		benchmark::DoNotOptimize(l);
 		benchmark::ClobberMemory();
 		//*/
