@@ -1,0 +1,107 @@
+[
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o CMakeFiles/spin_bench.dir/main.cpp.o -c /Users/danielkiss/prezi/spin/main.cpp",
+  "file": "/Users/danielkiss/prezi/spin/main.cpp"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_main.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_main.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/benchmark.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_api_internal.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_api_internal.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/benchmark_name.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_name.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_name.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/benchmark_register.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_register.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_register.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_runner.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/benchmark_runner.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/colorprint.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/colorprint.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/colorprint.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/commandlineflags.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/commandlineflags.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/commandlineflags.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/complexity.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/complexity.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/complexity.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/console_reporter.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/console_reporter.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/console_reporter.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/counter.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/counter.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/counter.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/csv_reporter.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/csv_reporter.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/csv_reporter.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/json_reporter.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/json_reporter.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/json_reporter.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/perf_counters.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/perf_counters.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/perf_counters.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/reporter.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/reporter.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/reporter.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/sleep.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/sleep.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/sleep.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/statistics.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/statistics.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/statistics.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/string_util.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/string_util.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/string_util.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/sysinfo.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/sysinfo.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/sysinfo.cc"
+},
+{
+  "directory": "/Users/danielkiss/prezi/spin/build",
+  "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_POSIX_REGEX -DHAVE_STD_REGEX -DHAVE_STEADY_CLOCK -I/Users/danielkiss/prezi/spin/subprojects/benchmark/include -I/Users/danielkiss/prezi/spin/subprojects/benchmark/src   -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -std=gnu++17 -o subprojects/benchmark/src/CMakeFiles/benchmark.dir/timers.cc.o -c /Users/danielkiss/prezi/spin/subprojects/benchmark/src/timers.cc",
+  "file": "/Users/danielkiss/prezi/spin/subprojects/benchmark/src/timers.cc"
+}
+]
