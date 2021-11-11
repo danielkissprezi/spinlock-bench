@@ -3,28 +3,22 @@
 
 ## Build requirements:
 
+- Git [Optional, but strongly recommended]
 - C++ compiler
 - CMake
-- Python deps (requirements.txt)
+- Ninja [Optional, but strongly recommended]
+- [Optional] Python deps `pip3 install requirements.txt`
 
 
-## Build
+## TL;DR
 
 ```
+git clone https://github.com/danielkissprezi/spinlock-bench
+cd spinlock-bench
 git submodule update --init --recursive
 mkdir build
 cd build
 cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. 
-ninja
+cmake --build .
+./spin_bench --benchmark_out=result.json
 ```
-
-## Run
-
-```
-# In build/
-./spin_bench --benchmark_out=../result.json
-
-# In the root
-python3 viz.py
-```
-
