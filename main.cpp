@@ -9,13 +9,6 @@
 #if defined(__amd64__) || defined(_M_X64)
 #define SPIN_X64 1
 
-#if defined(_MSVC_VER)
-// thx msvc
-#include <inrin.h>
-#else
-#include <emmintrin.h>
-#endif
-
 #elif defined(__arm__)
 
 #define SPIN_ARM 1
@@ -70,7 +63,7 @@ struct Pause {
 				// emit a pause instruction.
 				// this signals to the CPU that this thread is in a spin-loop
 				// but does not release this thread to the OS scheduler!
-				_mm_pause();
+				asm volatile("pause");
 #endif
 			} while (locked.load(std::memory_order_relaxed));
 		}
@@ -132,8 +125,8 @@ void HeavyContention(benchmark::State& state) {
 	LOCK_BENCH_IMPL(method, lock, 16);
 
 LOCK_BENCH(HeavyContention, NoYield)
-LOCK_BENCH(HeavyContention, Yield)
 LOCK_BENCH(HeavyContention, Pause)
+LOCK_BENCH(HeavyContention, Yield)
 LOCK_BENCH(HeavyContention, std::mutex)
 
 BENCHMARK_MAIN();
