@@ -5,7 +5,7 @@ from pprint import pprint
 import pandas as pd
 
 
-with open("result.json", "r") as f:
+with open("build/result.json", "r") as f:
     data = json.load(f)
 
 

@@ -4,6 +4,7 @@
 #include <atomic>
 #include <thread>
 #include <mutex>
+#include <algorithm>
 
 #if defined(__amd64__) || defined(_M_X64)
 #define SPIN_X64 1
@@ -18,7 +19,6 @@
 #elif defined(__arm__)
 
 #define SPIN_ARM 1
-
 
 #else
 
@@ -64,7 +64,7 @@ struct Pause {
 		while (locked.exchange(true, std::memory_order_acquire)) {	// retry loop
 			do {
 #if SPIN_ARM
-				asm volatile("wfe\n");
+				asm volatile("wfe");
 #endif
 #if SPIN_X64
 				// emit a pause instruction.
@@ -79,7 +79,7 @@ struct Pause {
 	void unlock() {
 		locked.store(false, std::memory_order_release);
 #if SPIN_ARM
-		asm volatile("sev\n");
+		asm volatile("sev");
 #endif
 	}
 };
@@ -117,14 +117,23 @@ void HeavyContention(benchmark::State& state) {
 	}
 }
 
-#define LOCK_BENCH(method, lock)                                 \
-	BENCHMARK_TEMPLATE(method, lock)->Threads(1)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(method, lock)->Threads(2)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(method, lock)->Threads(4)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(method, lock)->Threads(8)->UseRealTime(); \
-	BENCHMARK_TEMPLATE(method, lock)->Threads(16)->UseRealTime();
+#define LOCK_BENCH_IMPL(method, lock, n)                                                \
+	BENCHMARK_TEMPLATE(method, lock)                                                    \
+		->ComputeStatistics(                                                            \
+			"max", [](auto const& v) { return *std::max_element(v.begin(), v.end()); }) \
+		->Threads(n)                                                                    \
+		->UseRealTime();
+
+#define LOCK_BENCH(method, lock)      \
+	LOCK_BENCH_IMPL(method, lock, 1); \
+	LOCK_BENCH_IMPL(method, lock, 2); \
+	LOCK_BENCH_IMPL(method, lock, 4); \
+	LOCK_BENCH_IMPL(method, lock, 8); \
+	LOCK_BENCH_IMPL(method, lock, 16);
 
 LOCK_BENCH(HeavyContention, NoYield)
 LOCK_BENCH(HeavyContention, Yield)
 LOCK_BENCH(HeavyContention, Pause)
 LOCK_BENCH(HeavyContention, std::mutex)
+
+BENCHMARK_MAIN();
