@@ -110,10 +110,8 @@ void HeavyContention(benchmark::State& state) {
 	}
 }
 
-#define LOCK_BENCH_IMPL(method, lock, n)                                                \
-	BENCHMARK_TEMPLATE(method, lock)                                                    \
-		->Threads(n)                                                                    \
-		->UseRealTime();
+#define LOCK_BENCH_IMPL(method, lock, n) \
+	BENCHMARK_TEMPLATE(method, lock)->Threads(n)->UseRealTime();
 
 #define LOCK_BENCH(method, lock)      \
 	LOCK_BENCH_IMPL(method, lock, 1); \
