@@ -112,8 +112,6 @@ void HeavyContention(benchmark::State& state) {
 
 #define LOCK_BENCH_IMPL(method, lock, n)                                                \
 	BENCHMARK_TEMPLATE(method, lock)                                                    \
-		->ComputeStatistics(                                                            \
-			"max", [](auto const& v) { return *std::max_element(v.begin(), v.end()); }) \
 		->Threads(n)                                                                    \
 		->UseRealTime();
 
