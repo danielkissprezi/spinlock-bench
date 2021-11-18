@@ -9,7 +9,7 @@
 #if defined(__amd64__) || defined(_M_X64)
 #define SPIN_X64 1
 
-#elif defined(__arm__)
+#elif defined(__ARM_ARCH)
 
 #define SPIN_ARM 1
 
@@ -25,7 +25,7 @@ struct NoYield {
 
 	void lock() {
 		while (locked.exchange(true, std::memory_order_acquire))
-			;  // busy wait
+				;  // busy wait
 	}
 
 	void unlock() {
