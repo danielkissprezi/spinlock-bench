@@ -25,7 +25,7 @@ struct NoYield {
 
 	void lock() {
 		while (locked.exchange(true, std::memory_order_acquire))
-				;  // busy wait
+			;  // busy wait
 	}
 
 	void unlock() {
@@ -76,39 +76,71 @@ struct Pause {
 #endif
 	}
 };
+#if SPIN_ARM
+struct Crused {
+	std::atomic<int> locked{0};
 
-///////////////////// ✓ Locks /////////////////////
+	void lock() {
+		int l, f, tmp;
+		for (;;) {
+			asm volatile(
+				R"(
+.try_read:            
+    mov %w2, #1
+    ldaxrb %w0, %3
+    stxrb %w1, %w2, %3
+    cbnz %w0, .try_read
+    cbz %w1, .read_loop
+    ret
+.read_loop:
+)"
+				: "=r"(l), "=r"(f), "=r"(tmp)
+				: "m"(locked));
 
-///////////////////// ● Helper methods /////////////////////
-template <int n, class TLock>
-void UnlockNTimes(TLock& l) {
-	for (int i = 0; i < n; ++i) {
-		l.lock();
-		// force lock write to global memory
-		//*
-		benchmark::DoNotOptimize(l);
-		benchmark::ClobberMemory();
-		//*/
-		l.unlock();
-	}
-}
+			do {
+				asm volatile("wfe");
+			} while (locked.load(std::memory_order_relaxed));
+		}
 
-///////////////////// ✓ Helper methods /////////////////////
+		void unlock() {
+			locked.store(0, std::memory_order_release);
+			asm volatile("sev");
+		}
+	};
+#endif
 
-template <class TLock>
-void HeavyContention(benchmark::State& state) {
-	static TLock* l;
-	if (state.thread_index() == 0) {
-		l = new TLock();
+	///////////////////// ✓ Locks /////////////////////
+
+	///////////////////// ● Helper methods /////////////////////
+	template <int n, class TLock>
+	void UnlockNTimes(TLock& l) {
+		for (int i = 0; i < n; ++i) {
+			l.lock();
+			// force lock write to global memory
+			//*
+			benchmark::DoNotOptimize(l);
+			benchmark::ClobberMemory();
+			//*/
+			l.unlock();
+		}
 	}
-	for (auto _ : state) {
-		UnlockNTimes<1>(*l);
+
+	///////////////////// ✓ Helper methods /////////////////////
+
+	template <class TLock>
+	void HeavyContention(benchmark::State& state) {
+		static TLock* l;
+		if (state.thread_index() == 0) {
+			l = new TLock();
+		}
+		for (auto _ : state) {
+			UnlockNTimes<1>(*l);
+		}
+		// cleanup
+		if (state.thread_index() == 0) {
+			delete l;
+		}
 	}
-	// cleanup
-	if (state.thread_index() == 0) {
-		delete l;
-	}
-}
 
 #define LOCK_BENCH_IMPL(method, lock, n) \
 	BENCHMARK_TEMPLATE(method, lock)->Threads(n)->UseRealTime();
@@ -120,9 +152,12 @@ void HeavyContention(benchmark::State& state) {
 	LOCK_BENCH_IMPL(method, lock, 8); \
 	LOCK_BENCH_IMPL(method, lock, 16);
 
-LOCK_BENCH(HeavyContention, NoYield)
-LOCK_BENCH(HeavyContention, Pause)
-LOCK_BENCH(HeavyContention, Yield)
-LOCK_BENCH(HeavyContention, std::mutex)
+	LOCK_BENCH(HeavyContention, NoYield)
+	LOCK_BENCH(HeavyContention, Pause)
+	LOCK_BENCH(HeavyContention, Yield)
+	LOCK_BENCH(HeavyContention, std::mutex)
+#if SPIN_ARM
+	LOCK_BENCH(HeavyContention, Cursed)
+#endif
 
-BENCHMARK_MAIN();
+	BENCHMARK_MAIN();
