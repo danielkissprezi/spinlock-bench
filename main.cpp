@@ -101,46 +101,47 @@ struct Cursed {
 				asm volatile("wfe");
 			} while (locked.load(std::memory_order_relaxed));
 		}
+	}
 
-		void unlock() {
-			locked.store(0, std::memory_order_release);
-			asm volatile("sev");
-		}
-	};
+	void unlock() {
+		locked.store(0, std::memory_order_release);
+		asm volatile("sev");
+	}
+};
 #endif
 
-	///////////////////// ✓ Locks /////////////////////
+///////////////////// ✓ Locks /////////////////////
 
-	///////////////////// ● Helper methods /////////////////////
-	template <int n, class TLock>
-	void UnlockNTimes(TLock& l) {
-		for (int i = 0; i < n; ++i) {
-			l.lock();
-			// force lock write to global memory
-			//*
-			benchmark::DoNotOptimize(l);
-			benchmark::ClobberMemory();
-			//*/
-			l.unlock();
-		}
+///////////////////// ● Helper methods /////////////////////
+template <int n, class TLock>
+void UnlockNTimes(TLock& l) {
+	for (int i = 0; i < n; ++i) {
+		l.lock();
+		// force lock write to global memory
+		//*
+		benchmark::DoNotOptimize(l);
+		benchmark::ClobberMemory();
+		//*/
+		l.unlock();
 	}
+}
 
-	///////////////////// ✓ Helper methods /////////////////////
+///////////////////// ✓ Helper methods /////////////////////
 
-	template <class TLock>
-	void HeavyContention(benchmark::State& state) {
-		static TLock* l;
-		if (state.thread_index() == 0) {
-			l = new TLock();
-		}
-		for (auto _ : state) {
-			UnlockNTimes<1>(*l);
-		}
-		// cleanup
-		if (state.thread_index() == 0) {
-			delete l;
-		}
+template <class TLock>
+void HeavyContention(benchmark::State& state) {
+	static TLock* l;
+	if (state.thread_index() == 0) {
+		l = new TLock();
 	}
+	for (auto _ : state) {
+		UnlockNTimes<1>(*l);
+	}
+	// cleanup
+	if (state.thread_index() == 0) {
+		delete l;
+	}
+}
 
 #define LOCK_BENCH_IMPL(method, lock, n) \
 	BENCHMARK_TEMPLATE(method, lock)->Threads(n)->UseRealTime();
@@ -152,12 +153,12 @@ struct Cursed {
 	LOCK_BENCH_IMPL(method, lock, 8); \
 	LOCK_BENCH_IMPL(method, lock, 16);
 
-	LOCK_BENCH(HeavyContention, NoYield)
-	LOCK_BENCH(HeavyContention, Pause)
-	LOCK_BENCH(HeavyContention, Yield)
-	LOCK_BENCH(HeavyContention, std::mutex)
+LOCK_BENCH(HeavyContention, NoYield);
+LOCK_BENCH(HeavyContention, Pause);
+LOCK_BENCH(HeavyContention, Yield);
+LOCK_BENCH(HeavyContention, std::mutex);
 #if SPIN_ARM
-	LOCK_BENCH(HeavyContention, Cursed)
+LOCK_BENCH(HeavyContention, Cursed);
 #endif
 
-	BENCHMARK_MAIN();
+BENCHMARK_MAIN();
