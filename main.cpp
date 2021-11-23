@@ -77,7 +77,7 @@ struct Pause {
 	}
 };
 #if SPIN_ARM
-struct Crused {
+struct Cursed {
 	std::atomic<int> locked{0};
 
 	void lock() {
