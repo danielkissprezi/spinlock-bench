@@ -85,14 +85,14 @@ struct Cursed {
 		for (;;) {
 			asm volatile(
 				R"(
-.try_read:            
+1:.try_read:            
     mov %w2, #1
     ldaxrb %w0, %3
     stxrb %w1, %w2, %3
-    cbnz %w0, .try_read
-    cbz %w1, .read_loop
+    cbnz %w0, 1b
+    cbz %w1, 1f
     ret
-.read_loop:
+1:.read_loop:
 )"
 				: "=r"(l), "=r"(f), "=r"(tmp)
 				: "m"(locked));
