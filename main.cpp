@@ -95,8 +95,8 @@ struct Cursed {
 1:.try_read:            
     ldaxrb %w0, %2
     stxrb %w1, %w3, %2
-    cbnz %w0, 1b
-    cbnz %w1, 1f
+    cbnz %w1, 1b
+    cbnz %w0, 1f
     ret
 1:.read_loop:
 )"
