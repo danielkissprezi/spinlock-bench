@@ -100,7 +100,7 @@ struct Cursed {
     ret
 1:.read_loop:
 )"
-				: "=r"(lockval), "=r"(flagval), "m"(locked)
+				: "=r"(lockval), "=r"(flagval), "=m"(locked)
 				: "r"(tmp));
 
 			do {
