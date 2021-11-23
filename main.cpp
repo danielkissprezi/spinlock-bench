@@ -81,21 +81,27 @@ struct Cursed {
 	std::atomic<int> locked{0};
 
 	void lock() {
-		int l, f, tmp;
+		int lockval, flagval;
+		const int tmp = 1;
 		for (;;) {
+			/*
+			Exchange the `locked` value
+			If the original value was 1: jump to the read loop
+			If the exchange fails try again
+			If we aquired the lock (exchange succeeded and the original value was 0): return
+			*/
 			asm volatile(
 				R"(
 1:.try_read:            
-    mov %w2, #1
-    ldaxrb %w0, %3
-    stxrb %w1, %w2, %3
+    ldaxrb %w0, %2
+    stxrb %w1, %w3, %2
     cbnz %w0, 1b
     cbnz %w1, 1f
     ret
 1:.read_loop:
 )"
-				: "=r"(l), "=r"(f), "=r"(tmp)
-				: "m"(locked));
+				: "=r"(lockval), "=r"(flagval), "m"(locked)
+				: "r"(tmp));
 
 			do {
 				asm volatile("wfe");
