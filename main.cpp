@@ -73,46 +73,6 @@ struct Pause {
 		locked.store(false, std::memory_order_release);
 	}
 };
-// #if SPIN_ARM
-// struct Cursed {
-// 	std::atomic<int> locked{0};
-
-// 	void lock() {
-// 		int lockval, flagval;
-// 		const int tmp = 1;
-// 		for (;;) {
-// 			/*
-// 			Exchange the `locked` value
-// 			If the original value was 1: jump to the read loop
-// 			If the exchange fails try again
-// 			If we aquired the lock (exchange succeeded and the original value was 0): return
-// 			*/
-// 			asm volatile(
-// 				R"(
-// 1:.try_read:            
-//     ldaxrb %w0, %2
-//     stxrb %w1, %w3, %2
-//     cbnz %w1, 1b
-//     cbnz %w0, 1f
-//     ret
-// 1:.read_loop:
-// )"
-// 				: "=r"(lockval), "=r"(flagval), "=m"(locked)
-// 				: "r"(tmp));
-
-// 			do {
-// 				asm volatile("wfe");
-// 			} while (locked.load(std::memory_order_relaxed));
-// 		}
-// 	}
-
-// 	void unlock() {
-// 		locked.store(0, std::memory_order_release);
-// 		asm volatile("sev");
-// 	}
-// };
-// #endif
-
 ///////////////////// ✓ Locks /////////////////////
 
 ///////////////////// ● Helper methods /////////////////////
@@ -160,8 +120,5 @@ LOCK_BENCH(HeavyContention, NoYield);
 LOCK_BENCH(HeavyContention, Pause);
 LOCK_BENCH(HeavyContention, Yield);
 LOCK_BENCH(HeavyContention, std::mutex);
-#if SPIN_ARM
-LOCK_BENCH(HeavyContention, Cursed);
-#endif
 
 BENCHMARK_MAIN();
