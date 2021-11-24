@@ -57,7 +57,7 @@ struct Pause {
 		while (locked.exchange(true, std::memory_order_acquire)) {	// retry loop
 			do {
 #if SPIN_ARM
-				asm volatile("wfe");
+				asm volatile("yield");
 #endif
 #if SPIN_X64
 				// emit a pause instruction.
@@ -71,9 +71,6 @@ struct Pause {
 
 	void unlock() {
 		locked.store(false, std::memory_order_release);
-#if SPIN_ARM
-		asm volatile("sev");
-#endif
 	}
 };
 // #if SPIN_ARM
